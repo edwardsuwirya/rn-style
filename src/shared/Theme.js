@@ -25,17 +25,19 @@ export const theme = {
     },
     text: {
         title: {
-            fontSize: 32,
-            fontWeight: 'bold',
-            color: pallete.grey
+            fontSize: 36,
+            color: pallete.grey,
+            fontFamily: 'Poppins-Bold'
         },
         subtitle: {
-            fontSize: 16,
-            color: pallete.grey
+            fontSize: 18,
+            color: pallete.grey,
+            fontFamily: 'Poppins-Regular'
         },
         subtitle2: {
-            fontSize: 24,
-            color: pallete.grey
+            fontSize: 32,
+            color: pallete.grey,
+            fontFamily: 'Poppins-Regular'
         }
     }
 }

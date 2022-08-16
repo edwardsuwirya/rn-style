@@ -6,7 +6,7 @@ const TitleLabel = ({text, subTitle = false}) => {
     const theme = useTheme();
     return (
         <View>
-            {subTitle ? <Text style={theme.text.subtitle}>{text}</Text> : <Text style={theme.text.title}>{text}</Text>}
+            {subTitle ? <Text style={theme.text.subtitle2}>{text}</Text> : <Text style={theme.text.title}>{text}</Text>}
         </View>
     );
 };

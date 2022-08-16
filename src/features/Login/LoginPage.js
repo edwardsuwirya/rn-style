@@ -4,8 +4,12 @@ import FormInput from "../../shared/components/FormInput";
 import FormButton from "../../shared/components/FormButton";
 import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
+import Entypo from '@expo/vector-icons/Entypo';
+import {useTheme} from "../../shared/context/ThemeContext";
 
 const LoginPage = () => {
+    const theme = useTheme();
+    const styles = styling(theme);
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
     return (
@@ -19,14 +23,14 @@ const LoginPage = () => {
                     <FormInput isPassword placeholder="Input your password" onChangeValue={onChangePassword}
                                value={password}/>
                     <FormButton label='Login' onClick={() => {
-                    }}/>
+                    }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
                 </View>
             </AppBackground>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+const styling = (theme) => (StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -44,5 +48,10 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
     },
-});
+    iconButton: {
+        color: theme.colors.white,
+        fontSize: 14,
+        marginRight: theme.spacing.s
+    }
+}));
 export default LoginPage;
