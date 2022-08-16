@@ -1,7 +1,8 @@
 const pallete = {
     white: '#fff',
     orange: 'rgb(252,80,40)',
-    grey: 'rgb(92,93,95)'
+    grey: 'rgb(92,93,95)',
+    lightGrey: 'rgb(234,236,241)'
 }
 
 export const theme = {
@@ -9,7 +10,8 @@ export const theme = {
     colors: {
         foreground: pallete.grey,
         primary: pallete.orange,
-        secondary: pallete.white
+        secondary: pallete.lightGrey,
+        white: pallete.white
     },
     spacing: {
         s: 8,

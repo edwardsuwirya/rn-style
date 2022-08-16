@@ -1,13 +1,13 @@
 import {StyleSheet, TextInput} from 'react-native';
 import {useTheme} from "../context/ThemeContext";
 
-const FormInput = ({value, onChangeValue, placeHolder, keyboard = 'default', isPassword = false}) => {
+const FormInput = ({value, onChangeValue, placeholder='', keyboard = 'default', isPassword = false}) => {
     const theme = useTheme();
     const styles = styling(theme);
     return (
         <TextInput
             style={styles.input}
-            placeholder={placeHolder}
+            placeholder={placeholder}
             onChangeText={onChangeValue}
             value={value}
             keyboardType={keyboard}
@@ -25,7 +25,8 @@ const styling = (theme) => StyleSheet.create({
         borderWidth: 1,
         borderRadius: theme.radius.m,
         padding: theme.spacing.s,
-        borderColor: theme.colors.foreground,
+        backgroundColor: theme.colors.secondary,
+        borderColor:theme.colors.foreground
     }
 });
 export default FormInput;
