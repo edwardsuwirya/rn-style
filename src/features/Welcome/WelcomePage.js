@@ -1,27 +1,28 @@
-import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import LottieView from 'lottie-react-native';
+import FormButton from "../../shared/components/FormButton";
+import TitleLabel from "../../shared/components/TitleLabel";
+import AppBackground from "../../shared/components/AppBackground";
 
 const WelcomePage = () => {
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../../assets/img/background.jpg')} resizeMode="cover"
-                             style={styles.background}>
+            <AppBackground style={{
+                justifyContent: "space-evenly",
+                alignItems: 'center'
+            }}>
                 <LottieView
                     autoPlay
                     style={styles.image}
                     source={require('../../../assets/img/67221-food-market-app-interaction.json')}
                 />
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>POS System</Text>
-                    <Text style={styles.subtitle}>Simple Point Of Sales</Text>
+                    <TitleLabel text='POS System'/>
+                    <TitleLabel subTitle text='Simple Point Of Sales'/>
                 </View>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={()=>{}}
-                >
-                    <Text style={styles.textButton}>Sign In</Text>
-                </TouchableOpacity>
-            </ImageBackground>
+                <FormButton label='Sign In' onClick={() => {
+                }}></FormButton>
+            </AppBackground>
         </View>
     );
 };
@@ -36,33 +37,8 @@ const styles = StyleSheet.create({
         height: 200,
         alignItems: 'center',
     },
-    background: {
-        flex: 1,
-        justifyContent: "space-evenly",
-        alignItems:'center'
-    },
     titleContainer: {
         alignItems: "center",
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "rgb(252,80,40)",
-        padding: 10,
-        borderRadius:5,
-        alignSelf:'stretch',
-        margin:16
-    },
-    textButton:{
-        color:'#fff'
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: "bold",
-        color: 'rgb(92,93,95)'
-    },
-    subtitle: {
-        fontSize: 16,
-        color: 'rgb(92,93,95)'
-    }
 });
 export default WelcomePage;
