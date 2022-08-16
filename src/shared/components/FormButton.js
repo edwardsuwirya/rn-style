@@ -1,12 +1,12 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from "../context/ThemeContext";
 
-const FormButton = ({label, onClick, Icon = null}) => {
+const FormButton = ({label, onClick, style = {}, Icon = null}) => {
     const theme = useTheme();
     const styles = styling(theme);
     return (
         <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, style]}
             onPress={onClick}
         >
             {Icon}

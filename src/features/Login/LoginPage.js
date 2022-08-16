@@ -22,7 +22,7 @@ const LoginPage = () => {
                     <FormInput placeholder="Input your email" onChangeValue={onChangeUserName} value={userName}/>
                     <FormInput isPassword placeholder="Input your password" onChangeValue={onChangePassword}
                                value={password}/>
-                    <FormButton label='Login' onClick={() => {
+                    <FormButton label='Login' style={styles.buttonSpace} onClick={() => {
                     }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
                 </View>
             </AppBackground>
@@ -38,12 +38,15 @@ const styling = (theme) => (StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
-        marginLeft: 16,
-        marginBottom: 16,
+        marginLeft: theme.spacing.m,
+        marginBottom: theme.spacing.m,
     },
     form: {
         alignSelf: 'stretch',
         flex: 2,
+    },
+    buttonSpace: {
+        marginTop: theme.spacing.l
     },
     background: {
         flex: 1,
