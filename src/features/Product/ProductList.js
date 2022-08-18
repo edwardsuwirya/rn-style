@@ -17,11 +17,18 @@ const ProductList = () => {
         setIsFetching(true);
         try {
             const response = await productService.getAllProduct(page);
-            setProducts(prevState => [
-                    ...prevState,
-                    ...response
-                ]
-            );
+            if (page === 1) {
+                setProducts([
+                        ...response
+                    ]
+                );
+            } else {
+                setProducts(prevState => [
+                        ...prevState,
+                        ...response
+                    ]
+                );
+            }
             setIsFetching(false);
         } catch (e) {
             console.log(e);
@@ -32,6 +39,10 @@ const ProductList = () => {
         setPage(prevState => prevState + 1);
     }
 
+    const onRefresh = async () => {
+        setPage(1);
+    }
+
     const renderItem = ({item}) => {
         return <Item productName={item.productName}/>
     }
@@ -39,7 +50,7 @@ const ProductList = () => {
         <MainContainer>
             <HeaderPageLabel text='Product'/>
             <FlatList
-                onRefresh={onGetAllProduct}
+                onRefresh={onRefresh}
                 onEndReached={onFetchMore}
                 refreshing={isFetching}
                 data={products}
