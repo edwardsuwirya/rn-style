@@ -1,4 +1,4 @@
-import {Button, FlatList, Text, View} from "react-native";
+import {FlatList} from "react-native";
 import Item from "./components/ProductItem";
 import {useDependency} from "../../shared/hook/UseDependency";
 import {useEffect, useState} from "react";
@@ -9,9 +9,10 @@ const ProductList = () => {
     const {productService} = useDependency();
     const [products, setProducts] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
+    const [isNext, setIsNext] = useState(true)
     useEffect(() => {
-        onGetAllProduct(page);
+        onGetAllProduct();
     }, [page]);
     const onGetAllProduct = async () => {
         setIsFetching(true);
@@ -30,13 +31,19 @@ const ProductList = () => {
                 );
             }
             setIsFetching(false);
+            setIsNext(true)
         } catch (e) {
             console.log(e);
+            setIsNext(false)
             setIsFetching(false);
         }
     }
     const onFetchMore = async () => {
-        setPage(prevState => prevState + 1);
+        if (isNext) {
+            setPage(prevState => prevState + 1);
+        } else {
+            onGetAllProduct()
+        }
     }
 
     const onRefresh = async () => {
