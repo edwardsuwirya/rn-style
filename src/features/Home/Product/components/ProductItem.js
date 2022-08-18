@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from "react-native";
-import {useTheme} from "../../../shared/context/ThemeContext";
+import {useTheme} from "../../../../shared/context/ThemeContext";
 
 const Item = ({productName}) => {
     const theme = useTheme();

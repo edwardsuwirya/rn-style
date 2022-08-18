@@ -3,5 +3,5 @@ export const ROUTE = {
     WELCOME: 'welcome',
     HOME: 'home',
     PAGE_A: 'Page A',
-    PAGE_B: 'Page B',
+    PRODUCT: 'Product',
 }

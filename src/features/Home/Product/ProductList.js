@@ -1,9 +1,9 @@
-import {Button, FlatList, Text, View} from "react-native";
+import {FlatList} from "react-native";
 import Item from "./components/ProductItem";
-import {useDependency} from "../../shared/hook/UseDependency";
+import {useDependency} from "../../../shared/hook/UseDependency";
 import {useEffect, useState} from "react";
-import MainContainer from "../../shared/components/MainContainer";
-import HeaderPageLabel from "../../shared/components/HeaderPageLabel";
+import MainContainer from "../../../shared/components/MainContainer";
+import HeaderPageLabel from "../../../shared/components/HeaderPageLabel";
 
 const ProductList = () => {
     const {productService} = useDependency();
