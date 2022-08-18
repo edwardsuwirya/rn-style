@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'stretch',
         justifyContent: 'flex-start',
+        padding:8
     }
 });
 export default MainContainer;
