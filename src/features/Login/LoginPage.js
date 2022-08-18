@@ -6,8 +6,11 @@ import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
 import Entypo from '@expo/vector-icons/Entypo';
 import {useTheme} from "../../shared/context/ThemeContext";
+import {useNavigation} from "@react-navigation/native";
+import {ROUTE} from "../../shared/constants";
 
 const LoginPage = () => {
+    const navigation = useNavigation()
     const theme = useTheme();
     const styles = styling(theme);
     const [userName, onChangeUserName] = useState('');
@@ -23,6 +26,7 @@ const LoginPage = () => {
                     <FormInput isPassword placeholder="Input your password" onChangeValue={onChangePassword}
                                value={password}/>
                     <FormButton label='Login' style={styles.buttonSpace} onClick={() => {
+                        navigation.replace(ROUTE.HOME)
                     }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
                 </View>
             </AppBackground>

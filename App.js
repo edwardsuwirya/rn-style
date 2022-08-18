@@ -1,6 +1,8 @@
-import LoginPage from "./src/features/Login/LoginPage";
 import {ThemeProvider} from "./src/shared/context/ThemeContext";
 import useAppFont from "./src/shared/hook/UseAppFont";
+import {NavigationContainer} from "@react-navigation/native";
+import AppRouter from "./src/navigation/AppRouter";
+
 
 export default function App() {
     const fonts = useAppFont();
@@ -10,11 +12,9 @@ export default function App() {
     }
     return (
         <ThemeProvider>
-            {/*<MainContainer>*/}
-            {/*<Text>React Native Components</Text>*/}
-            {/*</MainContainer>*/}
-            {/*<WelcomePage/>*/}
-            <LoginPage/>
+            <NavigationContainer>
+                <AppRouter/>
+            </NavigationContainer>
         </ThemeProvider>
     );
 }
