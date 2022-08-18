@@ -8,7 +8,13 @@ export const productService = () => {
         const endIndex = page * pagePerRow;
         try {
             return await sleep((resolve, reject) => {
-                resolve(DATA.slice(startIndex, endIndex));
+                const response = DATA.slice(startIndex, endIndex)
+                if (response.length === 0) {
+                    reject('no more data')
+                } else {
+                    resolve(response);
+                }
+
             }, 1000);
         } catch (e) {
             throw e;
