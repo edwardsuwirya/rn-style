@@ -1,4 +1,4 @@
-import {FlatList, Text, View} from "react-native";
+import {Button, FlatList, Text, View} from "react-native";
 import Item from "./components/ProductItem";
 import {useDependency} from "../../shared/hook/UseDependency";
 import {useEffect, useState} from "react";
@@ -7,23 +7,29 @@ import HeaderPageLabel from "../../shared/components/HeaderPageLabel";
 
 const ProductList = () => {
     const {productService} = useDependency();
-    const [products, setProducts] = useState({});
+    const [products, setProducts] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
+    const [page, setPage] = useState(1)
     useEffect(() => {
-        onGetAllProduct();
-    }, []);
+        onGetAllProduct(page);
+    }, [page]);
     const onGetAllProduct = async () => {
         setIsFetching(true);
         try {
-            //Simulasi
-            setProducts([]);
-            const response = await productService.getAllProduct();
-            setProducts(response);
+            const response = await productService.getAllProduct(page);
+            setProducts(prevState => [
+                    ...prevState,
+                    ...response
+                ]
+            );
             setIsFetching(false);
         } catch (e) {
-            console.log('Error');
+            console.log(e);
             setIsFetching(false);
         }
+    }
+    const onFetchMore = async () => {
+        setPage(prevState => prevState + 1);
     }
 
     const renderItem = ({item}) => {
@@ -34,6 +40,7 @@ const ProductList = () => {
             <HeaderPageLabel text='Product'/>
             <FlatList
                 onRefresh={onGetAllProduct}
+                onEndReached={onFetchMore}
                 refreshing={isFetching}
                 data={products}
                 renderItem={renderItem}

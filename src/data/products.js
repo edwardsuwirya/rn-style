@@ -62,5 +62,45 @@ export const DATA = [
     {
         id: '109',
         productName: 'Garam'
+    },
+    {
+        id: '209',
+        productName: 'Obat pusing'
+    },
+    {
+        id: '210',
+        productName: 'Obat Maag'
+    },
+    {
+        id: '211',
+        productName: 'Sereal'
+    },
+    {
+        id: '212',
+        productName: 'Minyak Goreng'
+    },
+    {
+        id: '213',
+        productName: 'Tepung'
+    },
+    {
+        id: '214',
+        productName: 'Coklat'
+    },
+    {
+        id: '215',
+        productName: 'Tepung roti'
+    },
+    {
+        id: '216',
+        productName: 'Roti tawar'
+    },
+    {
+        id: '217',
+        productName: 'Selai Coklat'
+    },
+    {
+        id: '218',
+        productName: 'Pasta'
     }
 ];
