@@ -37,7 +37,7 @@ const LoginPage = () => {
                 }
             }
         } catch (e) {
-            setError(new Error('Unauthorized'));
+            setError(e);
         }
     }
     return (
