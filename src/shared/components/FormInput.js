@@ -12,6 +12,7 @@ const FormInput = ({value, onChangeValue, placeholder='', keyboard = 'default', 
             value={value}
             keyboardType={keyboard}
             secureTextEntry={isPassword}
+            selectionColor={theme.colors.primary}
         />
     );
 };
@@ -27,7 +28,7 @@ const styling = (theme) => StyleSheet.create({
         padding: theme.spacing.s,
         backgroundColor: theme.colors.secondary,
         borderColor:theme.colors.foreground,
-        fontFamily:'Poppins-Regular'
+        fontFamily:'Poppins-Regular',
     }
 });
 export default FormInput;

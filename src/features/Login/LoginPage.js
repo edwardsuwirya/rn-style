@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import {useState} from "react";
 import FormInput from "../../shared/components/FormInput";
 import FormButton from "../../shared/components/FormButton";
@@ -8,6 +8,10 @@ import Entypo from '@expo/vector-icons/Entypo';
 import {useTheme} from "../../shared/context/ThemeContext";
 import {useNavigation} from "@react-navigation/native";
 import {ROUTE} from "../../shared/constants";
+import {useDependency} from "../../shared/hook/UseDependency";
+import Spinner from "../../shared/components/Spinner";
+import useViewState from "../../shared/hook/UseViewState";
+import Snackbar from "../../shared/components/Snackbar";
 
 const LoginPage = () => {
     const navigation = useNavigation()
@@ -15,8 +19,26 @@ const LoginPage = () => {
     const styles = styling(theme);
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
+    const {viewState, setLoading, setError} = useViewState();
+    const {loginService} = useDependency();
+
+    const onAuthenticate = async () => {
+        Keyboard.dismiss();
+        setLoading();
+        try {
+            const response = await loginService.authenticate({userName: userName, password: password});
+            if (response) {
+                navigation.replace(ROUTE.HOME)
+            } else {
+                setError(new Error('Unauthorized'))
+            }
+        } catch (e) {
+            setError(new Error('Unauthorized'));
+        }
+    }
     return (
         <View style={styles.container}>
+            {viewState.isLoading && <Spinner/>}
             <AppBackground>
                 <View style={styles.header}>
                     <TitleLabel subTitle text='Welcome!'/>
@@ -25,11 +47,11 @@ const LoginPage = () => {
                     <FormInput placeholder="Input your email" onChangeValue={onChangeUserName} value={userName}/>
                     <FormInput isPassword placeholder="Input your password" onChangeValue={onChangePassword}
                                value={password}/>
-                    <FormButton label='Login' style={styles.buttonSpace} onClick={() => {
-                        navigation.replace(ROUTE.HOME)
-                    }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
+                    <FormButton label='Login' style={styles.buttonSpace} onClick={onAuthenticate} Icon=<Entypo
+                                name="lock-open" style={styles.iconButton}/>/>
                 </View>
             </AppBackground>
+            {viewState.error !== null && <Snackbar message={viewState.error.message}/>}
         </View>
     );
 };

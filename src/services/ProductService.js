@@ -1,21 +1,14 @@
-import {sleep} from "../shared/sleep";
-import {DATA} from "../data/products";
+import {SERVICE} from "../shared/constants";
 
-export const productService = () => {
+export const productService = ({doGet}) => {
     const getAllProduct = async (page) => {
-        const pagePerRow = 20;
-        const startIndex = (page - 1) * pagePerRow;
-        const endIndex = page * pagePerRow;
         try {
-            return await sleep((resolve, reject) => {
-                const response = DATA.slice(startIndex, endIndex)
-                if (response.length === 0) {
-                    reject('no more data')
-                } else {
-                    resolve(response);
-                }
-
-            }, 1000);
+            const response = await doGet({url: SERVICE.PRODUCT, params: {pageNo: page, itemPerPage: 20}});
+            if (response.products.length === 0) {
+                throw new Error('No Data')
+            } else {
+                return response.products
+            }
         } catch (e) {
             throw e;
         }

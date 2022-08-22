@@ -5,3 +5,8 @@ export const ROUTE = {
     PAGE_A: 'Page A',
     PRODUCT: 'Product',
 }
+export const SERVICE = {
+    LOGIN: '/login',
+    USER_INFO: '/user-info',
+    PRODUCT: '/product'
+}
