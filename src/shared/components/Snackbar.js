@@ -12,7 +12,7 @@ const SnackBar = ({message = ''}) => {
                 useNativeDriver: true
             }
         ).start();
-    }, [fadeAnim])
+    })
 
     useEffect(() => {
         const autoClose = setTimeout(() => {
