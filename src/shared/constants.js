@@ -10,3 +10,7 @@ export const SERVICE = {
     USER_INFO: '/user-info',
     PRODUCT: '/product'
 }
+
+export const KEY = {
+    TOKEN: 'token'
+}

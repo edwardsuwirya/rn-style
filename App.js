@@ -9,7 +9,7 @@ import {clientInstance} from "./src/shared/AxiosClient";
 import {hideAsync, preventAutoHideAsync} from "expo-splash-screen";
 import {useCallback, useEffect, useState} from "react";
 import {View} from "react-native";
-
+import {AuthProvider} from "./src/shared/context/AuthContext";
 
 export default function App() {
     const [appIsReady, setAppIsReady] = useState(false);
@@ -45,7 +45,9 @@ export default function App() {
             <ThemeProvider>
                 <DependencyProvider services={services}>
                     <NavigationContainer>
-                        <AppRouter/>
+                        <AuthProvider>
+                            <AppRouter/>
+                        </AuthProvider>
                     </NavigationContainer>
                 </DependencyProvider>
             </ThemeProvider>

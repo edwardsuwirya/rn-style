@@ -8,10 +8,10 @@ import Entypo from '@expo/vector-icons/Entypo';
 import {useTheme} from "../../shared/context/ThemeContext";
 import {useNavigation} from "@react-navigation/native";
 import {ROUTE} from "../../shared/constants";
-import {useDependency} from "../../shared/hook/UseDependency";
 import Spinner from "../../shared/components/Spinner";
 import useViewState from "../../shared/hook/UseViewState";
 import Snackbar from "../../shared/components/Snackbar";
+import {useAuth} from "../../shared/hook/UseAuth";
 
 const LoginPage = () => {
     const navigation = useNavigation()
@@ -20,17 +20,21 @@ const LoginPage = () => {
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
     const {viewState, setLoading, setError} = useViewState();
-    const {loginService} = useDependency();
+    const {onLogin} = useAuth();
 
     const onAuthenticate = async () => {
         Keyboard.dismiss();
         setLoading();
         try {
-            const response = await loginService.authenticate({userName: userName, password: password});
-            if (response) {
-                navigation.replace(ROUTE.HOME)
+            if (userName === '' && password === '') {
+                throw new Error('Please input your user name and password');
             } else {
-                setError(new Error('Unauthorized'))
+                const response = await onLogin({userName: userName, password: password});
+                if (response) {
+                    navigation.replace(ROUTE.HOME)
+                } else {
+                    throw new Error('Unauthorized');
+                }
             }
         } catch (e) {
             setError(new Error('Unauthorized'));
