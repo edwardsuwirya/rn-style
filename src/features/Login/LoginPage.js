@@ -14,7 +14,7 @@ const LoginPage = () => {
     const styles = styling(theme);
     const {viewState, userName, password, onChangeUserName, onChangePassword, onAuthenticate} = useLoginPage();
     return (
-        <View style={styles.container}>
+        <View style={styles.container} accessibilityHint='Page_Login'>
             {viewState.isLoading && <Spinner/>}
             <AppBackground>
                 <View style={styles.header}>

@@ -24,7 +24,7 @@ const PageA = () => {
     return (
         <AppBackground>
             <SafeAreaView>
-                <Text>Page A</Text>
+                <Text accessibilityHint='Page_A'>Page A</Text>
                 <ModalDialog visible={modalVisible} onVisible={setModalVisible}/>
                 <Pressable onPress={() => setModalVisible(true)}>
                     <Text>Show Modal</Text>

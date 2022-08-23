@@ -9,7 +9,7 @@ import {useNavigation} from "@react-navigation/native";
 const WelcomePage = () => {
     const navigation = useNavigation();
     return (
-        <View style={styles.container}>
+        <View style={styles.container} accessibilityHint='Page_Welcome'>
             <AppBackground style={{
                 justifyContent: "space-evenly",
                 alignItems: 'center'
