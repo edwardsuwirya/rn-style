@@ -3,6 +3,7 @@ import {useEffect, useRef} from "react";
 
 const SnackBar = ({message = ''}) => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
+
     useEffect(() => {
         Animated.timing(
             fadeAnim,

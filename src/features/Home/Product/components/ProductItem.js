@@ -5,7 +5,7 @@ const Item = ({productName}) => {
     const theme = useTheme();
     const styles = styling(theme);
     return (
-        <View style={styles.item}>
+        <View style={styles.item} accessibilityHint='product-items'>
             <Text style={styles.itemText}>{productName}</Text>
         </View>
     )
