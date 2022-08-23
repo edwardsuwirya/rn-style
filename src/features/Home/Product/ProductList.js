@@ -4,6 +4,8 @@ import {useDependency} from "../../../shared/hook/UseDependency";
 import {useEffect, useState} from "react";
 import MainContainer from "../../../shared/components/MainContainer";
 import HeaderPageLabel from "../../../shared/components/HeaderPageLabel";
+import AppBackground from "../../../shared/components/AppBackground";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const ProductList = () => {
     const {productService} = useDependency();
@@ -54,17 +56,19 @@ const ProductList = () => {
         return <Item productName={item.productName}/>
     }
     return (
-        <MainContainer>
-            <HeaderPageLabel text='Product'/>
-            <FlatList
-                onRefresh={onRefresh}
-                onEndReached={onFetchMore}
-                refreshing={isFetching}
-                data={products}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-            />
-        </MainContainer>
+        <AppBackground>
+            <SafeAreaView>
+                <HeaderPageLabel text='Product'/>
+                <FlatList
+                    onRefresh={onRefresh}
+                    onEndReached={onFetchMore}
+                    refreshing={isFetching}
+                    data={products}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </SafeAreaView>
+        </AppBackground>
     );
 };
 export default ProductList;
