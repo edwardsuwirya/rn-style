@@ -6,6 +6,7 @@ import AppBackground from "../../../shared/components/AppBackground";
 import {useAuth} from "../../../shared/hook/UseAuth";
 import {useNavigation} from "@react-navigation/native";
 import {ROUTE} from "../../../shared/constants";
+import HeaderPageLabel from "../../../shared/components/HeaderPageLabel";
 
 const PageA = () => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -24,7 +25,7 @@ const PageA = () => {
     return (
         <AppBackground>
             <SafeAreaView>
-                <Text>Page A</Text>
+                <HeaderPageLabel text='Page A' avatarImg='https://picsum.photos/200/300'/>
                 <ModalDialog visible={modalVisible} onVisible={setModalVisible}/>
                 <Pressable onPress={() => setModalVisible(true)}>
                     <Text>Show Modal</Text>
