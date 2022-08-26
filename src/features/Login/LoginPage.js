@@ -6,6 +6,7 @@ import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
 import Entypo from '@expo/vector-icons/Entypo';
 import {useTheme} from "../../shared/context/ThemeContext";
+import MainContainer from "../../shared/components/MainContainer";
 
 const LoginPage = () => {
     const theme = useTheme();
@@ -13,10 +14,10 @@ const LoginPage = () => {
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
     return (
-        <View style={styles.container}>
+        <MainContainer>
             <AppBackground>
                 <View style={styles.header}>
-                    <TitleLabel subTitle text='Welcome!'/>
+                    <TitleLabel titleStyle={theme.text.subtitle2} text='Welcome!'/>
                 </View>
                 <View style={styles.form}>
                     <FormInput placeholder="Input your email" onChangeValue={onChangeUserName} value={userName}/>
@@ -26,14 +27,11 @@ const LoginPage = () => {
                     }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
                 </View>
             </AppBackground>
-        </View>
+        </MainContainer>
     );
 };
 
 const styling = (theme) => (StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',
