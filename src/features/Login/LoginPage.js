@@ -12,6 +12,7 @@ import {useDependency} from "../../shared/hook/UseDependency";
 import Spinner from "../../shared/components/Spinner";
 import useViewState from "../../shared/hook/UseViewState";
 import Snackbar from "../../shared/components/Snackbar";
+import MainContainer from "../../shared/components/MainContainer";
 
 const LoginPage = () => {
     const navigation = useNavigation()
@@ -37,11 +38,11 @@ const LoginPage = () => {
         }
     }
     return (
-        <View style={styles.container}>
+        <MainContainer>
             {viewState.isLoading && <Spinner/>}
             <AppBackground>
                 <View style={styles.header}>
-                    <TitleLabel subTitle text='Welcome!'/>
+                    <TitleLabel titleStyle={theme.text.subtitle2} text='Welcome!'/>
                 </View>
                 <View style={styles.form}>
                     <FormInput placeholder="Input your email" onChangeValue={onChangeUserName} value={userName}/>
@@ -52,14 +53,11 @@ const LoginPage = () => {
                 </View>
             </AppBackground>
             {viewState.error !== null && <Snackbar message={viewState.error.message}/>}
-        </View>
+        </MainContainer>
     );
 };
 
 const styling = (theme) => (StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',
