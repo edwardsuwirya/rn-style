@@ -59,17 +59,17 @@ export default function App() {
     }
     return (
         <View style={{flex: 1}} onLayout={onLayoutRootView}>
-            <ThemeProvider>
-                <DependencyProvider services={services}>
-                    <SafeAreaProvider>
+            <DependencyProvider services={services}>
+                <SafeAreaProvider>
+                    <ThemeProvider>
                         <NavigationContainer>
                             <AuthProvider>
                                 <AppRouter/>
                             </AuthProvider>
                         </NavigationContainer>
-                    </SafeAreaProvider>
-                </DependencyProvider>
-            </ThemeProvider>
+                    </ThemeProvider>
+                </SafeAreaProvider>
+            </DependencyProvider>
         </View>
     );
 }

@@ -3,15 +3,17 @@ import Item from "./components/ProductItem";
 import HeaderPageLabel from "../../../shared/components/HeaderPageLabel";
 import useProductList from "./UseProductList";
 import AppBackground from "../../../shared/components/AppBackground";
-import {SafeAreaView} from "react-native-safe-area-context";
+import MainContainer from "../../../shared/components/MainContainer";
+import {useTheme} from "../../../shared/context/ThemeContext";
 
 const ProductList = () => {
+    const theme = useTheme();
     const {viewState, onRefresh, onFetchMore} = useProductList();
     const renderItem = ({item}) => {
         return <Item productName={item.productName}/>
     }
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <MainContainer>
             <AppBackground>
                 <HeaderPageLabel text='Product'/>
                 <FlatList
@@ -21,9 +23,10 @@ const ProductList = () => {
                     data={viewState.data}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
+                    contentContainerStyle={{paddingBottom: theme.spacing.s}}
                 />
             </AppBackground>
-        </SafeAreaView>
+        </MainContainer>
     );
 };
 export default ProductList;
