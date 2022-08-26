@@ -1,3 +1,4 @@
+import {SafeAreaProvider} from "react-native-safe-area-context";
 import {ThemeProvider} from "./src/shared/context/ThemeContext";
 import useAppFont from "./src/shared/hook/UseAppFont";
 import {NavigationContainer} from "@react-navigation/native";
@@ -10,6 +11,7 @@ import {hideAsync, preventAutoHideAsync} from "expo-splash-screen";
 import {useCallback, useEffect, useState} from "react";
 import {View} from "react-native";
 import {AuthProvider} from "./src/shared/context/AuthContext";
+
 
 export default function App() {
     const [appIsReady, setAppIsReady] = useState(false);
@@ -42,15 +44,17 @@ export default function App() {
     }
     return (
         <View style={{flex: 1}} onLayout={onLayoutRootView}>
-            <ThemeProvider>
-                <DependencyProvider services={services}>
-                    <NavigationContainer>
-                        <AuthProvider>
-                            <AppRouter/>
-                        </AuthProvider>
-                    </NavigationContainer>
-                </DependencyProvider>
-            </ThemeProvider>
+            <DependencyProvider services={services}>
+                <SafeAreaProvider>
+                    <ThemeProvider>
+                        <NavigationContainer>
+                            <AuthProvider>
+                                <AppRouter/>
+                            </AuthProvider>
+                        </NavigationContainer>
+                    </ThemeProvider>
+                </SafeAreaProvider>
+            </DependencyProvider>
         </View>
     );
 }

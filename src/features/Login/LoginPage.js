@@ -8,17 +8,17 @@ import {useTheme} from "../../shared/context/ThemeContext";
 import Spinner from "../../shared/components/Spinner";
 import Snackbar from "../../shared/components/Snackbar";
 import useLoginPage from "./UseLoginPage";
-
+import MainContainer from "../../shared/components/MainContainer";
 const LoginPage = () => {
     const theme = useTheme();
     const styles = styling(theme);
     const {viewState, userName, password, onChangeUserName, onChangePassword, onAuthenticate} = useLoginPage();
     return (
-        <View style={styles.container} accessibilityHint='Page_Login'>
+        <MainContainer hint='Page_Login'>
             {viewState.isLoading && <Spinner/>}
             <AppBackground>
                 <View style={styles.header}>
-                    <TitleLabel subTitle text='Welcome!'/>
+                    <TitleLabel titleStyle={theme.text.subtitle2} text='Welcome!'/>
                 </View>
                 <View style={styles.form}>
                     <FormInput placeholder="Input your email" onChangeValue={onChangeUserName} value={userName}/>
@@ -29,14 +29,11 @@ const LoginPage = () => {
                 </View>
             </AppBackground>
             {viewState.error !== null && <Snackbar message={viewState.error.message}/>}
-        </View>
+        </MainContainer>
     );
 };
 
 const styling = (theme) => (StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',

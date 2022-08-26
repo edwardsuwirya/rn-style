@@ -1,11 +1,14 @@
 import {StatusBar, StyleSheet, View} from 'react-native';
+import {SafeAreaView} from "react-native-safe-area-context";
 
-const MainContainer = ({children}) => {
+const MainContainer = ({children, hint}) => {
     return (
-        <View style={styles.container}>
-            {children}
-            <StatusBar style="auto" />
-        </View>
+        <SafeAreaView style={styles.container}>
+            <StatusBar barStyle="dark-content" backgroundColor={'white'}/>
+            <View style={{flex: 1}} accessibilityHint={hint}>
+                {children}
+            </View>
+        </SafeAreaView>
     );
 };
 
@@ -15,7 +18,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'stretch',
         justifyContent: 'flex-start',
-        padding:8
     }
 });
 export default MainContainer;
