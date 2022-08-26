@@ -10,11 +10,18 @@ import {hideAsync, preventAutoHideAsync} from "expo-splash-screen";
 import {useCallback, useEffect, useState} from "react";
 import {View} from "react-native";
 import {AuthProvider} from "./src/shared/context/AuthContext";
+import * as Updates from "expo-updates";
+import {SafeAreaProvider} from "react-native-safe-area-context";
 
 export default function App() {
     const [appIsReady, setAppIsReady] = useState(false);
     const [services, setServices] = useState(null);
     const fonts = useAppFont();
+
+    useEffect(() => {
+        reactToUpdates();
+    }, []);
+
     useEffect(() => {
         const prepare = async () => {
             try {
@@ -31,6 +38,16 @@ export default function App() {
         }
         prepare();
     }, [fonts]);
+
+    const reactToUpdates = async () => {
+        Updates.addListener((event) => {
+            if (event.type === Updates.UpdateEventType.UPDATE_AVAILABLE) {
+                alert('An update is available. Restart your app');
+                // Force Restart
+                // Updates.reloadAsync();
+            }
+        })
+    }
     const onLayoutRootView = useCallback(async () => {
         if (appIsReady) {
             await hideAsync();
@@ -44,11 +61,13 @@ export default function App() {
         <View style={{flex: 1}} onLayout={onLayoutRootView}>
             <ThemeProvider>
                 <DependencyProvider services={services}>
-                    <NavigationContainer>
-                        <AuthProvider>
-                            <AppRouter/>
-                        </AuthProvider>
-                    </NavigationContainer>
+                    <SafeAreaProvider>
+                        <NavigationContainer>
+                            <AuthProvider>
+                                <AppRouter/>
+                            </AuthProvider>
+                        </NavigationContainer>
+                    </SafeAreaProvider>
                 </DependencyProvider>
             </ThemeProvider>
         </View>

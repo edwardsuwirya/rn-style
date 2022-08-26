@@ -9,7 +9,7 @@ const HeaderPageLabel = ({text = '', avatarImg = '', hint = ''}) => {
         <View style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            paddingBottom: theme.spacing.s,
+            padding: theme.spacing.s,
             marginBottom: theme.spacing.s,
             borderBottomWidth: 1,
             borderBottomColor: 'rgba(0,0,0,0.1)',

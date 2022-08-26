@@ -11,8 +11,8 @@ const ProductList = () => {
         return <Item productName={item.productName}/>
     }
     return (
-        <AppBackground>
-            <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
+            <AppBackground>
                 <HeaderPageLabel text='Product'/>
                 <FlatList
                     onRefresh={onRefresh}
@@ -22,8 +22,8 @@ const ProductList = () => {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />
-            </SafeAreaView>
-        </AppBackground>
+            </AppBackground>
+        </SafeAreaView>
     );
 };
 export default ProductList;

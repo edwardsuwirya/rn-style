@@ -1,4 +1,4 @@
-import {Pressable, Text} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useState} from "react";
 import ModalDialog from "../../../shared/components/ModalDialog";
@@ -23,18 +23,20 @@ const PageA = () => {
         }
     }
     return (
-        <AppBackground>
-            <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
+            <AppBackground>
                 <HeaderPageLabel text='Page A' hint='Page_A' avatarImg='https://picsum.photos/200/300'/>
-                <ModalDialog visible={modalVisible} onVisible={setModalVisible}/>
-                <Pressable onPress={() => setModalVisible(true)}>
-                    <Text>Show Modal</Text>
-                </Pressable>
-                <Pressable onPress={handleLogout}>
-                    <Text>Logout</Text>
-                </Pressable>
-            </SafeAreaView>
-        </AppBackground>
+                <View style={{flex:1}}>
+                    <Pressable onPress={() => setModalVisible(true)}>
+                        <Text>Show Modal</Text>
+                    </Pressable>
+                    <Pressable onPress={handleLogout}>
+                        <Text>Logout</Text>
+                    </Pressable>
+                </View>
+                {modalVisible && <ModalDialog visible={modalVisible} onVisible={setModalVisible}/>}
+            </AppBackground>
+        </SafeAreaView>
     );
 };
 

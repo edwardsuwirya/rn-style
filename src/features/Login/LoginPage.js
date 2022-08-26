@@ -8,15 +8,16 @@ import {useTheme} from "../../shared/context/ThemeContext";
 import Spinner from "../../shared/components/Spinner";
 import Snackbar from "../../shared/components/Snackbar";
 import useLoginPage from "./UseLoginPage";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const LoginPage = () => {
     const theme = useTheme();
     const styles = styling(theme);
     const {viewState, userName, password, onChangeUserName, onChangePassword, onAuthenticate} = useLoginPage();
     return (
-        <View style={styles.container} accessibilityHint='Page_Login'>
-            {viewState.isLoading && <Spinner/>}
+        <SafeAreaView style={styles.container} accessibilityHint='Page_Login'>
             <AppBackground>
+                {viewState.isLoading && <Spinner/>}
                 <View style={styles.header}>
                     <TitleLabel subTitle text='Welcome!'/>
                 </View>
@@ -29,7 +30,7 @@ const LoginPage = () => {
                 </View>
             </AppBackground>
             {viewState.error !== null && <Snackbar message={viewState.error.message}/>}
-        </View>
+        </SafeAreaView>
     );
 };
 

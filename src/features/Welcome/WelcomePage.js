@@ -5,11 +5,12 @@ import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
 import {ROUTE} from "../../shared/constants";
 import {useNavigation} from "@react-navigation/native";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const WelcomePage = () => {
     const navigation = useNavigation();
     return (
-        <View style={styles.container} accessibilityHint='Page_Welcome'>
+        <SafeAreaView style={styles.container} accessibilityHint='Page_Welcome'>
             <AppBackground style={{
                 justifyContent: "space-evenly",
                 alignItems: 'center'
@@ -27,14 +28,13 @@ const WelcomePage = () => {
                     navigation.replace(ROUTE.LOGIN)
                 }}></FormButton>
             </AppBackground>
-        </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "stretch",
     },
     image: {
         width: 200,
