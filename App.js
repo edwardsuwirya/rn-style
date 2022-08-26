@@ -1,4 +1,4 @@
-import LoginPage from "./src/features/Login/LoginPage";
+import {SafeAreaProvider} from "react-native-safe-area-context";
 import {ThemeProvider} from "./src/shared/context/ThemeContext";
 import useAppFont from "./src/shared/hook/UseAppFont";
 import {serviceFactory} from "./src/services/ServiceFactory";
@@ -13,14 +13,16 @@ export default function App() {
     }
     return (
         <DependencyProvider services={services}>
-            <ThemeProvider>
-                {/*<MainContainer>*/}
-                {/*<Text>React Native Components</Text>*/}
-                {/*</MainContainer>*/}
-                {/*<WelcomePage/>*/}
-                {/*<LoginPage/>*/}
-                <ProductList/>
-            </ThemeProvider>
+            <SafeAreaProvider>
+                <ThemeProvider>
+                    {/*<MainContainer>*/}
+                    {/*<Text>React Native Components</Text>*/}
+                    {/*</MainContainer>*/}
+                    {/*<WelcomePage/>*/}
+                    {/*<LoginPage/>*/}
+                    <ProductList/>
+                </ThemeProvider>
+            </SafeAreaProvider>
         </DependencyProvider>
     );
 }
