@@ -1,7 +1,8 @@
 export const ROUTE = {
     LOGIN: 'login',
     WELCOME: 'welcome',
-    HOME: 'home',
-    PAGE_A: 'Page A',
+    HOME: 'Home',
+    MAIN: 'main',
     PRODUCT: 'Product',
+    PIN: 'Pin'
 }

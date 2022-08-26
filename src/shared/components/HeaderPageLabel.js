@@ -13,7 +13,8 @@ const HeaderPageLabel = ({text = '', avatarImg = ''}) => {
             marginBottom: theme.spacing.s,
             borderBottomWidth: 1,
             borderBottomColor: 'rgba(0,0,0,0.1)',
-            alignItems: 'center'
+            alignItems: 'center',
+            marginTop:theme.spacing.s
         }}>
             <Text style={[theme.text.subtitle, {fontWeight: 'bold'}]}>{text}</Text>
             {avatarImg && <Avatar imageUrl={avatarImg}/>}

@@ -27,8 +27,8 @@ const LoginPage = () => {
                     <FormInput isPassword placeholder="Input your password" onChangeValue={onChangePassword}
                                value={password}/>
                     <FormButton label='Login' style={styles.buttonSpace} onClick={() => {
-                        navigation.replace(ROUTE.HOME)
-                    }} Icon=<Entypo name="lock-open" style={styles.iconButton}/>/>
+                        navigation.replace(ROUTE.MAIN)
+                    }} Icon={<Entypo name="lock-open" style={styles.iconButton}/>}/>
                 </View>
             </AppBackground>
         </MainContainer>

@@ -1,6 +1,6 @@
 import {Button, Modal, StyleSheet, Text, View} from "react-native";
 
-const ModalDialog = ({visible, onVisible}) => {
+const ModalDialog = ({visible = true, onVisible}) => {
     return (
         <View style={styles.centeredView}>
             <Modal
