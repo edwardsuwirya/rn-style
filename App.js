@@ -1,3 +1,4 @@
+import {SafeAreaProvider} from "react-native-safe-area-context";
 import {ThemeProvider} from "./src/shared/context/ThemeContext";
 import useAppFont from "./src/shared/hook/UseAppFont";
 import {NavigationContainer} from "@react-navigation/native";
@@ -12,12 +13,14 @@ export default function App() {
         return null;
     }
     return (
-        <ThemeProvider>
-            <DependencyProvider services={services}>
-                <NavigationContainer>
-                    <AppRouter/>
-                </NavigationContainer>
-            </DependencyProvider>
-        </ThemeProvider>
+        <DependencyProvider services={services}>
+            <SafeAreaProvider>
+                <ThemeProvider>
+                    <NavigationContainer>
+                        <AppRouter/>
+                    </NavigationContainer>
+                </ThemeProvider>
+            </SafeAreaProvider>
+        </DependencyProvider>
     );
 }
