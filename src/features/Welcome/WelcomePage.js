@@ -3,10 +3,11 @@ import LottieView from 'lottie-react-native';
 import FormButton from "../../shared/components/FormButton";
 import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
+import MainContainer from "../../shared/components/MainContainer";
 
 const WelcomePage = () => {
     return (
-        <View style={styles.container}>
+        <MainContainer>
             <AppBackground style={{
                 justifyContent: "space-evenly",
                 alignItems: 'center'
@@ -23,15 +24,11 @@ const WelcomePage = () => {
                 <FormButton label='Sign In' onClick={() => {
                 }}></FormButton>
             </AppBackground>
-        </View>
+        </MainContainer>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "stretch",
-    },
     image: {
         width: 200,
         height: 200,

@@ -4,12 +4,13 @@ import FormInput from "../../shared/components/FormInput";
 import FormButton from "../../shared/components/FormButton";
 import TitleLabel from "../../shared/components/TitleLabel";
 import AppBackground from "../../shared/components/AppBackground";
+import MainContainer from "../../shared/components/MainContainer";
 
 const LoginPage = () => {
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
     return (
-        <View style={styles.container}>
+        <MainContainer>
             <AppBackground>
                 <View style={styles.header}>
                     <TitleLabel subTitle text='Welcome!'/>
@@ -22,14 +23,11 @@ const LoginPage = () => {
                     }}/>
                 </View>
             </AppBackground>
-        </View>
+        </MainContainer>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',
