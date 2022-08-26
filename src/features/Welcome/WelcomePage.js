@@ -1,9 +1,10 @@
 import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import LottieView from 'lottie-react-native';
+import MainContainer from "../../shared/components/MainContainer";
 
 const WelcomePage = () => {
     return (
-        <View style={styles.container}>
+        <MainContainer>
             <ImageBackground source={require('../../../assets/img/background.jpg')} resizeMode="cover"
                              style={styles.background}>
                 <LottieView
@@ -22,15 +23,11 @@ const WelcomePage = () => {
                     <Text style={styles.textButton}>Sign In</Text>
                 </TouchableOpacity>
             </ImageBackground>
-        </View>
+        </MainContainer>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "stretch",
-    },
     image: {
         width: 200,
         height: 200,

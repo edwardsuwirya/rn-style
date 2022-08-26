@@ -1,11 +1,12 @@
 import {ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {useState} from "react";
+import MainContainer from "../../shared/components/MainContainer";
 
 const LoginPage = () => {
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
     return (
-        <View style={styles.container}>
+        <MainContainer>
             <ImageBackground source={require('../../../assets/img/background.jpg')} resizeMode="cover"
                              style={styles.background}>
                 <View style={styles.header}>
@@ -33,14 +34,11 @@ const LoginPage = () => {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
-        </View>
+        </MainContainer>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',
