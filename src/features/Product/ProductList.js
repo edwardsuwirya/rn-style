@@ -13,10 +13,15 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
-    const [isNext, setIsNext] = useState(true)
+    const [isNext, setIsNext] = useState(true);
+
+    let prevOpenedRow;
+    const row = [];
+
     useEffect(() => {
         onGetAllProduct();
     }, [page]);
+
     const onGetAllProduct = async () => {
         setIsFetching(true);
         try {
@@ -53,8 +58,24 @@ const ProductList = () => {
         setPage(1);
     }
 
-    const renderItem = ({item}) => {
-        return <Item productName={item.productName}/>
+    const onDeleteItem = (index) => {
+        console.log('Delete item', products[index])
+    }
+
+    const renderItem = ({item, index}) => {
+        return <Item productName={item.productName} idx={index} onDelete={() => onDeleteItem(index)} refRow={refRows}
+                     closeRow={() => closeRow(index)}/>
+    }
+
+    const refRows = (index, ref) => {
+        row[index] = ref
+    }
+
+    const closeRow = (index) => {
+        if (prevOpenedRow && prevOpenedRow !== row[index]) {
+            prevOpenedRow.close();
+        }
+        prevOpenedRow = row[index];
     }
     return (
         <MainContainer>

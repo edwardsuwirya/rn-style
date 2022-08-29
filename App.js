@@ -4,6 +4,7 @@ import useAppFont from "./src/shared/hook/UseAppFont";
 import {serviceFactory} from "./src/services/ServiceFactory";
 import {DependencyProvider} from "./src/shared/context/DependencyContext";
 import HomePage from "./src/features/Home/HomePage";
+import ProductList from "./src/features/Product/ProductList";
 
 export default function App() {
     const fonts = useAppFont();
@@ -20,8 +21,8 @@ export default function App() {
                     {/*</MainContainer>*/}
                     {/*<WelcomePage/>*/}
                     {/*<LoginPage/>*/}
-                    {/*<ProductList/>*/}
-                    <HomePage/>
+                    <ProductList/>
+                    {/*<HomePage/>*/}
                 </ThemeProvider>
             </SafeAreaProvider>
         </DependencyProvider>
