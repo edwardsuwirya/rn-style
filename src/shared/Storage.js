@@ -1,10 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {LOG} from "./Logging";
 
 export const Storage = () => {
     const storeData = async (key, value) => {
         try {
             await AsyncStorage.setItem(key, value)
         } catch (e) {
+            LOG.error(`Storage Service: ${e.message}`)
             throw e
         }
     }
@@ -16,6 +18,7 @@ export const Storage = () => {
                 return value
             }
         } catch (e) {
+            LOG.error(`Storage Service: ${e.message}`)
             throw e
         }
     }
@@ -23,6 +26,7 @@ export const Storage = () => {
         try {
             await AsyncStorage.removeItem(key)
         } catch (e) {
+            LOG.error(`Storage Service: ${e.message}`)
             throw e
         }
     }

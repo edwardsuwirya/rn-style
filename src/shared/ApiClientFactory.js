@@ -13,7 +13,6 @@ export const apiClientFactory = (client) => {
             const response = await client.get(url, {params: params});
             return response.data;
         } catch (e) {
-            console.log(e.message)
             throw e;
         }
     }

@@ -7,6 +7,7 @@ import {useAuth} from "../../../shared/hook/UseAuth";
 import {useNavigation} from "@react-navigation/native";
 import {ROUTE} from "../../../shared/constants";
 import HeaderPageLabel from "../../../shared/components/HeaderPageLabel";
+import {LOG} from "../../../shared/Logging";
 
 const PageA = () => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -17,16 +18,18 @@ const PageA = () => {
         try {
             const resp = await onLogout();
             if (resp) {
+                LOG.info(`User Logout`);
                 navigation.replace(ROUTE.LOGIN);
             }
         } catch (e) {
+            LOG.error(`Logout Service: ${e.message}`)
         }
     }
     return (
         <SafeAreaView style={{flex: 1}}>
             <AppBackground>
                 <HeaderPageLabel text='Page A' hint='Page_A' avatarImg='https://picsum.photos/200/300'/>
-                <View style={{flex:1}}>
+                <View style={{flex: 1}}>
                     <Pressable onPress={() => setModalVisible(true)}>
                         <Text>Show Modal</Text>
                     </Pressable>

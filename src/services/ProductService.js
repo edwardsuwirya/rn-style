@@ -1,4 +1,5 @@
 import {SERVICE} from "../shared/constants";
+import {LOG} from "../shared/Logging";
 
 export const productService = ({doGet}) => {
     const getAllProduct = async (page) => {
@@ -10,6 +11,7 @@ export const productService = ({doGet}) => {
                 return response.products
             }
         } catch (e) {
+            LOG.error(`Product Service: ${e.message}`)
             throw e;
         }
     }
