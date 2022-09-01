@@ -39,7 +39,8 @@ const styling = (theme) => StyleSheet.create({
         borderRadius: theme.radius.m,
         padding: theme.spacing.s,
         backgroundColor: theme.colors.secondary,
-        borderColor: theme.colors.foreground
+        borderColor: theme.colors.foreground,
+        alignItems:'center'
     }
 });
 export default FormPassword;
