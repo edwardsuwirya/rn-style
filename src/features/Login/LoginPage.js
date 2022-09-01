@@ -32,9 +32,9 @@ const LoginPage = () => {
                         >
                         </TextInput>
                         <Pressable onPress={() => {
+                            setHidePass(!hidePass)
                         }}>
-                            <Entypo name={hidePass ? 'eye-with-line' : 'eye'} size={15} color="grey"
-                                    onPress={() => setHidePass(!hidePass)}/>
+                            <Entypo name={hidePass ? 'eye-with-line' : 'eye'} size={15} color="grey"/>
                         </Pressable>
                     </View>
                     <TouchableOpacity
