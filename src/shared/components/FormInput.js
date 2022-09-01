@@ -1,7 +1,7 @@
 import {StyleSheet, TextInput} from 'react-native';
 import {useTheme} from "../context/ThemeContext";
 
-const FormInput = ({value, onChangeValue, placeholder='', keyboard = 'default', isPassword = false}) => {
+const FormInput = ({value, onChangeValue, placeholder='', keyboard = 'default'}) => {
     const theme = useTheme();
     const styles = styling(theme);
     return (
@@ -11,7 +11,6 @@ const FormInput = ({value, onChangeValue, placeholder='', keyboard = 'default', 
             onChangeText={onChangeValue}
             value={value}
             keyboardType={keyboard}
-            secureTextEntry={isPassword}
         />
     );
 };
