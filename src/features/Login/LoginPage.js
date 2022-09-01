@@ -20,6 +20,7 @@ const LoginPage = () => {
                         value={userName}
                     />
                     <TextInput
+                        secureTextEntry
                         style={styles.input}
                         placeholder="Input your password"
                         onChangeText={onChangePassword}
