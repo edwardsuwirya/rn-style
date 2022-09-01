@@ -12,8 +12,8 @@ export default function App() {
         // </MainContainer>
         <SafeAreaProvider>
             <ThemeProvider>
-            <WelcomePage/>
-            {/*<LoginPage/>*/}
+                {/*<WelcomePage/>*/}
+                <LoginPage/>
             </ThemeProvider>
         </SafeAreaProvider>
     );
