@@ -1,10 +1,12 @@
-import {ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View, Keyboard, Pressable} from 'react-native';
 import {useState} from "react";
 import MainContainer from "../../shared/components/MainContainer";
+import {Entypo} from '@expo/vector-icons';
 
 const LoginPage = () => {
     const [userName, onChangeUserName] = useState('');
     const [password, onChangePassword] = useState('');
+    const [hidePass, setHidePass] = useState(true);
     return (
         <MainContainer>
             <ImageBackground source={require('../../../assets/img/background.jpg')} resizeMode="cover"
@@ -14,21 +16,31 @@ const LoginPage = () => {
                 </View>
                 <View style={styles.form}>
                     <TextInput
+                        keyboardType={'email-address'}
                         style={styles.input}
                         placeholder="Input your email"
                         onChangeText={onChangeUserName}
                         value={userName}
                     />
-                    <TextInput
-                        secureTextEntry
-                        style={styles.input}
-                        placeholder="Input your password"
-                        onChangeText={onChangePassword}
-                        value={password}
-                    />
+                    <View style={[styles.input,styles.inputPasswordContainer]}>
+                        <TextInput
+                            secureTextEntry={hidePass}
+                            placeholder="Input your password"
+                            onChangeText={onChangePassword}
+                            value={password}
+                            style={{width:'100%'}}
+                        >
+                        </TextInput>
+                        <Pressable onPress={() => {
+                        }}>
+                            <Entypo name={hidePass ? 'eye-with-line' : 'eye'} size={15} color="grey"
+                                    onPress={() => setHidePass(!hidePass)}/>
+                        </Pressable>
+                    </View>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
+                            Keyboard.dismiss()
                         }}
                     >
                         <Text style={styles.textButton}>Login</Text>
@@ -40,6 +52,11 @@ const LoginPage = () => {
 };
 
 const styles = StyleSheet.create({
+    inputPasswordContainer: {
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingRight:24
+    },
     header: {
         flex: 1,
         justifyContent: 'flex-end',
